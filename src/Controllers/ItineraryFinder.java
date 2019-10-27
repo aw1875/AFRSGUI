@@ -35,7 +35,7 @@ public class ItineraryFinder {
         /**
          * Set Sorting Method Combobox's up
          */
-        String [] sortMethods = {"Departure Time (Default)", "Arrival Time", "Airfare"};
+        String[] sortMethods = {"Departure Time (Default)", "Arrival Time", "Airfare"};
         for (int i = 0; i < sortMethods.length; i++) {
             localSortingMethod.addItem(sortMethods[i]);
             onlineSortingMethod.addItem(sortMethods[i]);
@@ -182,7 +182,7 @@ public class ItineraryFinder {
                 if (localOriginTextfield.getText().equals("") || localDestinationTextfield.getText().equals("")) {
                     JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),
                             "Please enter both Origin and Destination airport codes.",
-                            "Missing Inputs",
+                            "Missing Required Inputs",
                             JOptionPane.ERROR_MESSAGE);
                 } else {
                     String sortMethod = "";

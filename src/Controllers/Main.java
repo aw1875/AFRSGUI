@@ -41,7 +41,7 @@ public class Main {
         });
     }
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         SceneBuilder.buildScene("AFRS", new Main().mainPanel, new Dimension(500, 100), JFrame.EXIT_ON_CLOSE);
     }
 }
