@@ -115,12 +115,21 @@ public class ItineraryFinder {
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /**
+                 * Disable connect button
+                 * Enable submit and disconnect buttons
+                 */
                 connectButton.setEnabled(false);
                 connectButton.setBackground(Color.decode("#E8E8E8"));
                 onlineSubmitButton.setEnabled(true);
                 onlineSubmitButton.setBackground(Color.decode("#3C97D9"));
                 disconnectButton.setEnabled(true);
                 disconnectButton.setBackground(Color.decode("#3C97D9"));
+
+                /**
+                 * Make connection
+                 */
+                // TODO: create connection
             }
         });
 
@@ -130,12 +139,21 @@ public class ItineraryFinder {
         disconnectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /**
+                 * Disable submit and disconnect buttons
+                 * Enable connect button
+                 */
                 connectButton.setEnabled(true);
                 connectButton.setBackground(Color.decode("#3C97D9"));
                 onlineSubmitButton.setEnabled(false);
                 onlineSubmitButton.setBackground(Color.decode("#E8E8E8"));
                 disconnectButton.setEnabled(false);
                 disconnectButton.setBackground(Color.decode("#E8E8E8"));
+
+                /**
+                 * Disconnect
+                 */
+                // TODO: disconnect
             }
         });
 
@@ -149,7 +167,7 @@ public class ItineraryFinder {
                 int selectedIndex = tabbedPane.getSelectedIndex();
 
                 if (selectedIndex == 0) {
-                    //TODO Add disconnect functionality & remove print
+                    //TODO: add disconnect functionality & remove print
                     System.out.println("Changed to Local Tab");
                 }
             }
