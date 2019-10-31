@@ -62,14 +62,18 @@ public class ItineraryFinder {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                onlineSubmitButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                onlineSubmitButton.setBackground(Color.decode("#4CAAEF"));
+                if (onlineSubmitButton.isEnabled()) {
+                    onlineSubmitButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    onlineSubmitButton.setBackground(Color.decode("#4CAAEF"));
+                }
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                onlineSubmitButton.setBackground(Color.decode("#3C97D9"));
+                if (onlineSubmitButton.isEnabled()) {
+                    onlineSubmitButton.setBackground(Color.decode("#3C97D9"));
+                }
             }
         });
         connectButton.addMouseListener(new MouseAdapter() {
@@ -115,21 +119,7 @@ public class ItineraryFinder {
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /**
-                 * Disable connect button
-                 * Enable submit and disconnect buttons
-                 */
-                connectButton.setEnabled(false);
-                connectButton.setBackground(Color.decode("#E8E8E8"));
-                onlineSubmitButton.setEnabled(true);
-                onlineSubmitButton.setBackground(Color.decode("#3C97D9"));
-                disconnectButton.setEnabled(true);
-                disconnectButton.setBackground(Color.decode("#3C97D9"));
-
-                /**
-                 * Make connection
-                 */
-                // TODO: create connection
+                connect();
             }
         });
 
@@ -139,21 +129,7 @@ public class ItineraryFinder {
         disconnectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /**
-                 * Disable submit and disconnect buttons
-                 * Enable connect button
-                 */
-                connectButton.setEnabled(true);
-                connectButton.setBackground(Color.decode("#3C97D9"));
-                onlineSubmitButton.setEnabled(false);
-                onlineSubmitButton.setBackground(Color.decode("#E8E8E8"));
-                disconnectButton.setEnabled(false);
-                disconnectButton.setBackground(Color.decode("#E8E8E8"));
-
-                /**
-                 * Disconnect
-                 */
-                // TODO: disconnect
+                disconnect();
             }
         });
 
@@ -167,8 +143,11 @@ public class ItineraryFinder {
                 int selectedIndex = tabbedPane.getSelectedIndex();
 
                 if (selectedIndex == 0) {
-                    //TODO: add disconnect functionality & remove print
-                    System.out.println("Changed to Local Tab");
+                    /**
+                     * Disconnect & clear fields
+                     */
+                    disconnect();
+                    clearFields();
                 }
             }
         });
@@ -228,6 +207,63 @@ public class ItineraryFinder {
                 }
             }
         });
+    }
+
+    public boolean connect() {
+        /**
+         * Disable connect button
+         * Enable submit and disconnect buttons
+         */
+        connectButton.setEnabled(false);
+        connectButton.setBackground(Color.decode("#E8E8E8"));
+        onlineSubmitButton.setEnabled(true);
+        onlineSubmitButton.setBackground(Color.decode("#3C97D9"));
+        disconnectButton.setEnabled(true);
+        disconnectButton.setBackground(Color.decode("#3C97D9"));
+
+        /**
+         * Make connection
+         */
+        // TODO: connection functionality
+        return true;
+    }
+
+    public boolean disconnect() {
+        /**
+         * Enable connect button
+         * Disable submit and disconnect buttons
+         */
+        connectButton.setEnabled(true);
+        connectButton.setBackground(Color.decode("#3C97D9"));
+        onlineSubmitButton.setEnabled(false);
+        onlineSubmitButton.setBackground(Color.decode("#E8E8E8"));
+        disconnectButton.setEnabled(false);
+        disconnectButton.setBackground(Color.decode("#E8E8E8"));
+
+        /**
+         * Disconnection
+         */
+        // TODO: disconnect functionality
+
+        return true;
+    }
+
+    public void clearFields() {
+        /**
+         * Local Fields
+         */
+        localOriginTextfield.setText("");
+        localDestinationTextfield.setText("");
+        localSortingMethod.setSelectedIndex(0);
+        localConnections.setValue(0);
+
+        /**
+         * Online Fields
+         */
+        onlineOriginTextfield.setText("");
+        onlineDestinationTextfield.setText("");
+        onlineSortingMethod.setSelectedIndex(0);
+        onlineConnections.setValue(0);
     }
 
     /**
